@@ -1,7 +1,4 @@
 library(shiny)
-library(ggplot2)
-library(ggfortify)
-library(gridExtra)
 
 #dataset is present in mlba::BostonHousing AKA ../../mlba/mlba/data-raw/BostonHousing.csv.gz
 setwd("../../mlba/mlba/data-raw")
@@ -29,37 +26,61 @@ CAT.MEDV.per.CHAS <- aggregate(housing.df$CAT..MEDV,
 names(CAT.MEDV.per.CHAS) <- c("CHAS", "MeanCATMEDV")
 CAT.MEDV.per.CHAS$CHAS <- factor(CAT.MEDV.per.CHAS$CHAS)
 
-g1 <- autoplot(ridership.ts) +
-    xlab("Year") +
-    ylab("Ridership (in 000)")
-
-#Scatter plot with Axes 
-g2 <- ggplot(housing.df) +
-    geom_point(aes(x = LSTAT, y = MEDV),
-    color = "navy",
-    alpha = 0.5)
-
-g3 <- ggplot(MEDV.per.CHAS) +
-    geom_bar(aes(x = CHAS, y = MeanMEDV, fill = CHAS), stat = "identity")
-
-g4 <- ggplot(CAT.MEDV.per.CHAS) +
-    geom_bar(aes(x = CHAS, y = MeanCATMEDV, fill = CHAS), stat = "identity") + 
-    ylab("% of CAT.MEDV") 
-
+#Line Chart
 plots.1 <- function() {
-    grid.arrange(g1, g2, g3, g4, ncol = 2, nrow = 2)
+    plot(ridership.ts, 
+    xlab="Year", 
+    ylab="Ridership (in 000s)",
+    ylim=c(1300,2300))
 }
 
+#Scatter Plot of LSTAT vs MEDV
+plots.2 <- function() {
+    plot(housing.df$MEDV ~ housing.df$LSTAT,
+    xlab="LSTAT",
+    ylab="MEDV")
+}
+
+#Barchart of CHAS vs % mean MEDV
+plots.3 <- function() {
+    barplot(MEDV.per.CHAS$MeanMEDV,
+    names.arg=MEDV.per.CHAS$CHAS,
+    xlab="CHAS",
+    ylab="Avg. MEDV")
+}
+
+#Barchart of CHAS vs. $ CAT.MEDV
+plots.4 <- function() {
+    barplot(CAT.MEDV.per.CHAS$MeanCATMEDV * 100, 
+    names.arg=CAT.MEDV.per.CHAS$CHAS,
+    xlab="CHAS",
+    ylab="% of CAT.MEDV")
+}
+
+#Display plots in Shiny Webserver
 ui <- fluidPage(
     plotOutput("plot1"),
+    plotOutput("plot2"),
+    plotOutput("plot3"),
+    plotOutput("plot4")
 )
 
 server <- function(input, output) {
     output$plot1 <- renderPlot({
         plots.1()
     })
+    
+    output$plot2 <- renderPlot({
+        plots.2()
+    })
+
+    output$plot3 <- renderPlot({
+        plots.3()
+    })
+
+    output$plot4 <- renderPlot({
+        plots.4()
+    })
 }
 
 shinyApp(ui = ui, server = server)
-    
-
