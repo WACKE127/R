@@ -9,4 +9,8 @@ sudo apt-get install -y \
   librsvg2-dev \
   pkg-config
 
-languageserver, caret, tidyverse, fastDummies
+sudo apt install dotnet-host-8.0
+
+sudo apt-get install build-essential libblas-dev liblapack-dev gfortran
+
+languageserver, caret, tidyverse, fastDummies, Caret, forecast
