@@ -1,0 +1,1 @@
+Chapter 2 has been primarily about getting acquainted with R and datasets.
