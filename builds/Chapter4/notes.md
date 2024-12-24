@@ -1,0 +1,1 @@
+sapply is a base method that can apply a function to variables within a dataframe
