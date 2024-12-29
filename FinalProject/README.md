@@ -59,3 +59,7 @@ Report Organization & Clarity	5%
     sudo sed -i 's/^\s*local\s\+all\s\+all\s\+peer\s*$/local   all   all   md5/' /etc/postgresql/17/main/pg_hba.conf
     sudo systemctl restart postgresql
 
+https://medium.com/@mokam1997/modulenotfounderror-no-module-named-dotenv-in-python-0c2599ef0626
+Silly fix because I had conda active ^^^ 
+
+conda install -c conda-forge python-dotenv

@@ -3,15 +3,12 @@ import os
 import requests
 from django.core.management.base import BaseCommand
 from eBayProject.models import Item
-from dotenv import load_dotenv
-
 
 class Command(BaseCommand):
     help = 'Fetch eBay watches and insert/update local DB'
 
     def handle(self, *args, **options):
-        load_dotenv("APIs.env")
-        token = os.getenv("eBay")
+        token = os.getenv(eBay)
         
         print(token)
         if not token:

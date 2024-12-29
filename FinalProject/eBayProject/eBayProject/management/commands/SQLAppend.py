@@ -27,9 +27,18 @@ def fetch_watches(token, query="watches", limit=10):
     headers = {"Authorization": f"Bearer {token}"}
     params = {"q": query, "limit": limit}
     r = requests.get(url, headers=headers, params=params)
+    
+    # Print the raw JSON response from eBay
+    print("\n--- eBay API Raw Response ---")
+    try:
+        print(r.json())
+    except Exception as e:
+        print("Error decoding JSON:", e)
+    
     return r.json().get("itemSummaries", [])
 
 def insert_data(conn, items):
+    rows_inserted = 0
     with conn.cursor() as cur:
         for i in items:
             cur.execute("""
@@ -60,11 +69,23 @@ def insert_data(conn, items):
                 i.get("department"),
                 None
             ))
+            
+            # cur.rowcount will be 1 if a new row was inserted, 0 if there's a conflict.
+            rows_inserted += cur.rowcount
+    
     conn.commit()
+    
+    # Print how many rows were actually inserted
+    print(f"\n--- Database Insertion Report ---")
+    if rows_inserted > 0:
+        print(f"{rows_inserted} new row(s) inserted into the database.")
+    else:
+        print("No new rows were inserted (all items were already in the database).")
 
 def main():
-    load_dotenv("APIs.ENV")
-    token = os.getenv("eBay")  # Reads the key from the ENV file
+    load_dotenv('APIs.env')
+    token = os.getenv('eBay')  # Reads the key from the ENV file
+    print(token)
     
     conn = psycopg2.connect(
         dbname="eBayProject",
