@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>eBay Items</title>
+</head>
+<body>
+    <h1>eBay Items</h1>
+    <table border="1">
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Seller</th>
+            <th>Listed Price</th>
+            <th>Brand</th>
+            <th>Condition</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.item_id }}</td>
+            <td>{{ item.item_name }}</td>
+            <td>{{ item.seller }}</td>
+            <td>{{ item.listed_price }}</td>
+            <td>{{ item.brand }}</td>
+            <td>{{ item.condition }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

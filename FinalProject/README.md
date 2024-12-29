@@ -41,3 +41,21 @@ Report Organization & Clarity	5%
 - Readable structure
 - Clear communication
 - Reproducible code	
+
+## Requirements: 
+
+- Python Installation 
+- R Installation
+- Libraries in pyRequirements.txt
+- API keys in APIs.env with the schema 
+    eBay = APIKEYPLACEHOLDER
+- PostgreSQL server
+    sudo apt install -y postgresql-common
+    sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+    sudo apt install postgresql-17
+    sudo service postgresql start
+    sudo apt-get install postgresql-client-17
+    psql -U project -h 127.0.0.1 -d eBayProject -W
+    sudo sed -i 's/^\s*local\s\+all\s\+all\s\+peer\s*$/local   all   all   md5/' /etc/postgresql/17/main/pg_hba.conf
+    sudo systemctl restart postgresql
+
