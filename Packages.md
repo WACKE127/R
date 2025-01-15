@@ -13,4 +13,4 @@ sudo apt install dotnet-host-8.0
 
 sudo apt-get install build-essential libblas-dev liblapack-dev gfortran
 
-languageserver, caret, tidyverse, fastDummies, Caret, forecast, shiny, ggplot2, ggfortify, gridExtra, td, leaps
+languageserver, caret, tidyverse, fastDummies, Caret, forecast, shiny, ggplot2, ggfortify, gridExtra, td, leaps, kernlab

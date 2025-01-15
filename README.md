@@ -7,6 +7,8 @@ Disclaimer: This repo is self-studied. All guidelines for projects are self-gene
 
 - 12/24/24 Project Guidelines 
 
+- 1/14/25 Scope expanded to include GTx Micromasters classes
+
 "Course" ORDER: 
 
 - C1: Introduction
