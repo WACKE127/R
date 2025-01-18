@@ -15,3 +15,9 @@ delays.df <- read.csv("FlightDelays.csv.gz") %>%
              ) %>%
              select(DAY_WEEK, CRS_DEP_TIME, ORIGIN, DEST, CARRIER, Flight.Status)
 
+set.seed(1)
+idx <- createDataPartition(delays.df$Flight.Status, 
+                           p=0.6, 
+                           list = FALSE)
+train.df <- delays.df[idx, ]
+holdout.df <- delays.df[-idx, ]
