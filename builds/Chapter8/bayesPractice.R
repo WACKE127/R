@@ -21,3 +21,6 @@ idx <- createDataPartition(delays.df$Flight.Status,
                            list = FALSE)
 train.df <- delays.df[idx, ]
 holdout.df <- delays.df[-idx, ]
+
+delays.nb <- naiveBayes(Flight.Status ~., data = train.df)
+delays.nb
