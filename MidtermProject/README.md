@@ -35,3 +35,15 @@ Interpretation & Reflection	20%
 Report Organization & Clarity	10%
 - Overall presentation and clarity
 - Code readability and reproducibility	
+
+Expected Tech Stack:
+- TEXT COLLECTION
+    - PyMuPDF
+- TEXT PREPROCESSING
+    - Python NLTK
+- Frontend
+    - Django
+- Database
+    - PostgreSQL
+- Backend/Analysis 
+    - R
