@@ -1,86 +1,87 @@
-###############################################################################
-# COMPREHENSIVE EXAMPLE: 10-FOLD CROSS-VALIDATION FOR KNN AND SVM USING CARET
-###############################################################################
-
-# 1) Load necessary packages
 library(caret)
-library(kknn)     # Provides kknn method (caret can interface with it)
-library(kernlab)  # Provides SVM (ksvm), used internally by caret's svm* methods
+library(kknn)
+library(kernlab)
+library(ggplot2)
+library(shiny)
 
-# 2) Load or read in your data
-#    Replace this with your actual data-loading step.
-#    For example, if your file is 'credit_card_data-headers.txt':
-# credit_card_data_headers <- read.table("credit_card_data-headers.txt", header=TRUE)
-# If it's already in your environment, just ensure it's in a data frame called credit_card_data_headers.
-
+# Data loading
 data("credit_card_data_headers")
 
-# Make sure the outcome (R1) is treated as a factor if you want classification
-# (if it's already 0/1 numeric, that's okay too, but usually classification in caret uses factors).
-# If R1 is numeric, uncomment:
-# credit_card_data_headers$R1 <- as.factor(credit_card_data_headers$R1)
+# Convert outcome to factor with valid names
+credit_card_data_headers$R1 <- factor(
+  credit_card_data_headers$R1,
+  levels = c(0, 1),
+  labels = c("Class0", "Class1")
+)
 
-# 3) Set a seed for reproducibility
 set.seed(123)
 
-# 4) Define 10-fold cross-validation
-train_control <- trainControl(
-  method = "cv",      # cross-validation
-  number = 10,        # 10 folds
-  classProbs = TRUE   # if you'd like to track class probabilities
-)
+# 10-fold cross-validation setup
+train_control <- trainControl(method = "cv", number = 10, classProbs = TRUE)
 
-###############################################################################
-# KNN MODEL WITH CARET + CROSS-VALIDATION
-###############################################################################
-# Define a grid of hyperparameters for the kknn method
+# ----- KNN with caret -----
+# Example: searching k=1..20 (adjust as you wish, e.g., 1:200)
 knn_grid <- expand.grid(
-  kmax    = c(1, 3, 5, 7, 9, 11, 15, 21, 42),  # different k values
-  distance = 2,                               # Euclidean
-  kernel   = "rectangular"                    # basic weighting kernel
+  kmax     = 1:100,
+  distance = 2,              # Euclidean
+  kernel   = "rectangular"
 )
 
-# Train KNN using the caret "train" function
 model_knn_cv <- train(
-  R1 ~ ., 
-  data      = credit_card_data_headers,
-  method    = "kknn",
-  trControl = train_control,
-  tuneGrid  = knn_grid,
-  metric    = "Accuracy",       # or "Kappa", etc.
-  preProcess = c("center","scale")  # scale features (recommended for kNN)
+  R1 ~ .,
+  data       = credit_card_data_headers,
+  method     = "kknn",
+  trControl  = train_control,
+  tuneGrid   = knn_grid,
+  metric     = "Accuracy",
+  preProcess = c("center", "scale")
 )
 
-# Show KNN results
+cat("\n--- KNN CROSS-VALIDATION RESULTS ---\n")
 print(model_knn_cv)
-plot(model_knn_cv)
 
-###############################################################################
-# SVM MODEL WITH CARET + CROSS-VALIDATION (LINEAR SVM EXAMPLE)
-###############################################################################
-# Define a grid of C values for a linear SVM
-svm_grid <- expand.grid(
-  C = c(0.1, 1, 10, 100)
-)
+# Extract results for plotting
+knn_plot_data <- model_knn_cv$results
+p_knn <- ggplot(knn_plot_data, aes(x = kmax, y = Accuracy)) +
+  geom_point() +
+  labs(title = "KNN (10-fold CV)", x = "k", y = "Accuracy") +
+  theme_minimal()
 
-# Train SVM using caret and the svmLinear method
+# ----- SVM with caret -----
+# Example: searching C in {0.1, 1, 10, 100} or a sequence
+svm_grid <- expand.grid(C = c(0.1, 1, 10, 100))
+# or a sequence: seq(0.1, 100, by=10) for a quick demonstration
+
 model_svm_cv <- train(
   R1 ~ .,
-  data      = credit_card_data_headers,
-  method    = "svmLinear", 
-  trControl = train_control,
-  tuneGrid  = svm_grid,
-  metric    = "Accuracy",   
-  preProcess = c("center","scale") # scale features (good practice for SVM)
+  data       = credit_card_data_headers,
+  method     = "svmLinear",
+  trControl  = train_control,
+  tuneGrid   = svm_grid,
+  metric     = "Accuracy",
+  preProcess = c("center", "scale")
 )
 
-# Show SVM results
+cat("\n--- SVM CROSS-VALIDATION RESULTS ---\n")
 print(model_svm_cv)
-plot(model_svm_cv)
 
-###############################################################################
-# The printed/plot output will give you:
-# - Cross-validated accuracy (and potentially other metrics)
-# - The best hyperparameters (k for KNN, C for SVM)
-# - Plots of accuracy vs. the tuning parameter
-###############################################################################
+# Extract results for plotting
+svm_plot_data <- model_svm_cv$results
+p_svm <- ggplot(svm_plot_data, aes(x = C, y = Accuracy)) +
+  geom_point() +
+  labs(title = "SVM (10-fold CV)", x = "C", y = "Accuracy") +
+  theme_minimal()
+
+# ----- Minimal Shiny App -----
+ui <- fluidPage(
+  h2("Cross-Validation Plots"),
+  plotOutput("plot_knn"),
+  plotOutput("plot_svm")
+)
+
+server <- function(input, output) {
+  output$plot_knn <- renderPlot({ p_knn })
+  output$plot_svm <- renderPlot({ p_svm })
+}
+
+shinyApp(ui, server)
