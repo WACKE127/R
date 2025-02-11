@@ -1,4 +1,4 @@
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 ug/ml cyclohexamide ,TAP + 50 ug/ml actinomycin D 
 0,8.7,0,0,0,0
 10,,0,0.5,0,0.3
 20,,0.7,0.8,4.1,2.3
@@ -10,7 +10,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,7.1,7.8,0.5,6.9,8.7
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,10.3,0,0,0,0
 10,,3.8,2.9,0,0
 20,,0,2.7,5.2,5.7
@@ -22,7 +22,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,9.44,8.5,1.1,8.5,6.2
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,8.2,0,0,0,0
 10,,1.8,2.9,0.9,0
 20,,3.2,1.5,2.9,2.3
@@ -34,7 +34,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,7.74,8.7,1.5,6,5
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,6.94,3.58,2.6,0,2.7
 10,,3.99,2.49,3.8,2.6
 20,,3.25,3.32,3.9,1.7
@@ -46,7 +46,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,5.97,5.96,3.02,5.3,7.5
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,10.1,0,0,0,0
 10,,0,0,0,0
 20,,0.86,0,0.46,0.35
@@ -58,7 +58,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,9.8,8.34,0,5.65,6.81
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,10.35,0,0,0,0
 10,,0,0,0,0
 20,,0.31,0,0.41,0
@@ -70,7 +70,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,10.21,7.22,0,5.4,7.21
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,10.03,0,0,0,0
 10,,0,0,0,0
 20,,0,0,0.58,1.57
@@ -82,7 +82,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,8.4,7.5,2.2,7.74,6.58
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,8,0,0,0,0
 10,,0.2,0,0.5,0.3
 20,,2.4,0.7,1.6,2.25
@@ -94,7 +94,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,8.7,9.3,0.1,7.8,8.6
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,10.2,0,0,0,0
 10,,1.8,0,0,1.1
 20,,3.2,1.35,0,4.4
@@ -106,7 +106,7 @@ Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg
 90,10.2,9.1,1.95,9.6,8.8
 ,,,,,
 ,,,,,
-Time point (min),Non-deflagellated,TAP only,TAP + 2mg/ml colchicine ,TAP + 10 æg/ml cyclohexamide ,TAP + 50 æg/ml actinomycin D 
+,,,,,
 0,10,0,0,0,0
 10,,0.4,0,0,0
 20,,1.9,0,3,1.7
