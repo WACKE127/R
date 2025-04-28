@@ -1,1 +1,3 @@
 There is no statistical analysis that we can run to determine whether or not the researchers impact their data with their recording method. This is because there is no control between the two researchers that guages their performance on an equal footing. The closest data sample we have is 1*10^6 cells/mL off. Therefore, researcher.R is currently futile and requires more time in lab gathering data.
+
+Chi squared may be unnecessary and certainly isn't implemented properly. Find alternative statistical test or figure out a way to circumvent its necessity.
